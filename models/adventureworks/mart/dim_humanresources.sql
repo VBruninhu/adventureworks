@@ -52,8 +52,8 @@ with
             , dep.groupname
 
         from hr_employee empl
-        left join hr_employeepayhistory empl_pay_hist on employee.businessentityid = empl_pay_hist.businessentityid
-        left join hr_employeedepartmenthistory empl_dep_hist on employee.businessentityid = empl_dep_hist.businessentityid
+        left join hr_employeepayhistory empl_pay_hist on empl.businessentityid = empl_pay_hist.businessentityid
+        left join hr_employeedepartmenthistory empl_dep_hist on empl.businessentityid = empl_dep_hist.businessentityid
         left join hr_shift shift on empl_dep_hist.shiftid = shift.shiftid
         left join hr_department dep on empl_dep_hist.departmentid = dep.departmentid
     )

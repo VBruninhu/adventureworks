@@ -4,7 +4,12 @@ models:
     - name: fact_sales
       description: "Nossa tabela de fatos"
       columns:
-        - name: order_id
+        - name: salesorderid
+          description: "A cahve primária original da tabela"
+          tests:
+            - unique
+            - not_null
+        - name: salesreasonid
           description: "A cahve primária original da tabela"
           tests:
             - unique
@@ -13,7 +18,7 @@ models:
     - name: dim_humanresources
       description: "A tabela de dim_humanrecources"
       columns:
-        - name: customer_id
+        - name: businessentityid
           description: "The primary key for this table"
           tests:
             - unique
@@ -22,7 +27,7 @@ models:
     - name: dim_person
       description: "A tabela de dim_person"
       columns:
-        - name: employee_id
+        - name: businessentityid
           description: "The primary key for this table"
           tests:
             - unique
@@ -31,7 +36,7 @@ models:
     - name: dim_purchasing
       description: "A tabela de dim_purchasing"
       columns:
-          - name: product_id
+          - name: purchaseorderid
             description: "The primary key for this table"
             tests:
                 - unique
@@ -40,7 +45,7 @@ models:
     - name: dim_production
       description: "A tabela de dim_production"
       columns:
-          - name: shipper_id
+          - name: transactionid
             description: "The primary key for this table"
             tests:
                 - unique

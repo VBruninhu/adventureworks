@@ -52,7 +52,7 @@ with
             , prod_cat.name as product_category_name
 
         from prod_transactionhistory trans_hist
-        left join prod_product prod on prod_trans_hist.productid = prod.productid
+        left join prod_product prod on trans_hist.productid = prod.productid
         left join prod_productsubcategory prod_sub_cat on prod.productsubcategoryid = prod_sub_cat.productsubcategoryid
         left join prod_productcategory prod_cat on prod_sub_cat.productcategoryid = prod_cat.productcategoryid
     )

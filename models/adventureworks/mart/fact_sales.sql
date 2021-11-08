@@ -36,11 +36,6 @@ with
         from{{ref('stg_sales_salesreason')}}
     ),
 
-    sales_salesterritory as (
-        select *
-        from{{ref('stg_sales_salesterritory')}}
-    ),
-
     sales_store as (
         select *
         from{{ref('stg_sales_store')}}
@@ -89,8 +84,8 @@ with
             , sales_ord_head.status
             , sales_ord_head.purchaseordernumber
             , sales_ord_head.customerid
-            , sales_ord_head.salespersonid
-            , sales_ord_head.territoryid
+            , sales_ord_head.salespersonid as sales_ord_head_salespersonid
+            , sales_ord_head.territoryid as sales_ord_head_territoryid
             , sales_ord_head.billtoaddressid
             , sales_ord_head.shiptoaddressid
             , sales_ord_head.shipmethodid
@@ -99,24 +94,17 @@ with
             , sales_ord_head.taxamt
             , sales_ord_head.freight
             , sales_ord_head.totaldue
-            , sales_pers.cred_card.cardtype
-            , sales_pers.territoryid
+            , cred_card.cardtype
+            , sales_pers.territoryid as sales_pers_territoryid
             , sales_pers.salesquota
             , sales_pers.bonus
             , sales_pers.commissionpct
             , sales_pers.salesytd
             , sales_pers.saleslastyear
-            , sales_ter.name as sales_territory_name
-            , sales_ter.countryregioncode
-            , sales_ter.group
-            , sales_ter.salesytd
-            , sales_ter.saleslastyear
-            , sales_ter.costytd
-            , sales_ter.costlastyear
             , customer.personid
             , customer.storeid
             , store.name as sales_store_name
-            , store.salespersonid
+            , store.salespersonid as store_salespersonid
             , sales_ord_det.salesorderdetailid
             , sales_ord_det.orderqty
             , sales_ord_det.productid
@@ -128,7 +116,6 @@ with
             , pers.pers_sk
             , pur.pur_sk
             , pur.purchaseorderid
-            , pur.productid
             , prod.prod_sk
             , prod.transactionid
 
@@ -137,7 +124,6 @@ with
         left join sales_salesorderheader sales_ord_head on sales_ord_head_sales_reas.salesorderid = sales_ord_head.salesorderid
         left join sales_creditcard cred_card on sales_ord_head.creditcardid = cred_card.creditcardid
         left join sales_salesperson sales_pers on sales_ord_head.customerid = sales_pers.businessentityid
-        left join sales_salesterritory sales_ter on sales_ord_head.territoryid = sales_ter.territoryid
         left join sales_customer customer on sales_ord_head.customerid = customer.customerid
         left join sales_store store on sales_pers.businessentityid = store.businessentityid
         left join sales_salesorderdetail sales_ord_det on sales_ord_head.salesorderid = sales_ord_det.salesorderid

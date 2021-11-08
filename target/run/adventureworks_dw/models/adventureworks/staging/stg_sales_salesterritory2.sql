@@ -1,0 +1,20 @@
+
+
+  create or replace view `woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_salesterritory2`
+  OPTIONS()
+  as with
+    source_data as (
+        select
+            territoryid
+            , name
+            , countryregioncode
+            , group as gp
+            , salesytd
+            , saleslastyear
+            , costytd
+            , costlastyear
+        from `woven-passkey-328019`.`querry_adventureworks20211025`.`sales_salesterritory`
+    )
+
+select * from source_data;
+
