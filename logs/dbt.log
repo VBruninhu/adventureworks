@@ -12932,3 +12932,59 @@ There are 2 unused configuration paths:
 2021-11-08 02:04:41.570712 (Thread-267): handling status request
 2021-11-08 02:04:41.571047 (Thread-267): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a74eeb6e-4e87-4852-b006-daec0718970f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a443c430>]}
 2021-11-08 02:04:41.571573 (Thread-267): sending response (<Response 1674 bytes [200 OK]>) to 10.0.47.99
+2021-11-08 02:04:43.524179 (Thread-268): Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2021-11-08 02:04:43.524581 (Thread-268): Partial parsing enabled, no changes found, skipping parsing
+2021-11-08 02:04:43.526180 (Thread-268): [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.northwind_dw.northwind
+- models.northwind_dw.example
+
+2021-11-08 02:04:43.533281 (Thread-268): Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'a74eeb6e-4e87-4852-b006-daec0718970f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a43d8b20>]}
+2021-11-08 02:04:44.097059 (Thread-269): handling status request
+2021-11-08 02:04:44.097374 (Thread-269): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a74eeb6e-4e87-4852-b006-daec0718970f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a43d8940>]}
+2021-11-08 02:04:44.097849 (Thread-269): sending response (<Response 1674 bytes [200 OK]>) to 10.0.37.216
+2021-11-08 02:04:44.428517 (Thread-270): handling status request
+2021-11-08 02:04:44.428835 (Thread-270): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a74eeb6e-4e87-4852-b006-daec0718970f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a43d8850>]}
+2021-11-08 02:04:44.429305 (Thread-270): sending response (<Response 1674 bytes [200 OK]>) to 10.0.24.229
+2021-11-08 02:04:44.529976 (Thread-271): handling status request
+2021-11-08 02:04:44.530310 (Thread-271): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a74eeb6e-4e87-4852-b006-daec0718970f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a43d8970>]}
+2021-11-08 02:04:44.530766 (Thread-271): sending response (<Response 1652 bytes [200 OK]>) to 10.0.5.16
+2021-11-08 02:04:44.541233 (Thread-272): handling list request
+2021-11-08 02:04:44.541433 (Thread-272): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a74eeb6e-4e87-4852-b006-daec0718970f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a43f81f0>]}
+2021-11-08 02:04:44.584077 (Thread-272): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '50b99e46-2c4a-4974-ae43-deb29fe391c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a43f8580>]}
+2021-11-08 02:04:44.584325 (Thread-272): Found 33 models, 72 tests, 0 snapshots, 0 analyses, 184 macros, 0 operations, 0 seed files, 28 sources, 0 exposures
+2021-11-08 02:04:44.587643 (Thread-272): The selection criterion '+1636337072989/__unsaved/Statement' does not match any nodes
+2021-11-08 02:04:44.588148 (Thread-272): The selection criterion '1.sql+' does not match any nodes
+2021-11-08 02:04:44.588241 (Thread-272): No nodes selected!
+2021-11-08 02:04:44.589665 (Thread-272): sending response (<Response 2285 bytes [200 OK]>) to 10.0.5.16
+2021-11-08 02:04:53.139548 (Thread-273): handling status request
+2021-11-08 02:04:53.139867 (Thread-273): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': '50b99e46-2c4a-4974-ae43-deb29fe391c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a42940d0>]}
+2021-11-08 02:04:53.140365 (Thread-273): sending response (<Response 1652 bytes [200 OK]>) to 10.0.5.16
+2021-11-08 02:04:53.153009 (Thread-274): handling list request
+2021-11-08 02:04:53.153252 (Thread-274): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': '50b99e46-2c4a-4974-ae43-deb29fe391c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a443cc70>]}
+2021-11-08 02:04:53.204291 (Thread-274): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'a3b9d638-593c-4430-a60a-49213c317f2f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a43f89a0>]}
+2021-11-08 02:04:53.204607 (Thread-274): Found 33 models, 72 tests, 0 snapshots, 0 analyses, 184 macros, 0 operations, 0 seed files, 28 sources, 0 exposures
+2021-11-08 02:04:53.208005 (Thread-274): The selection criterion '+1636337072989/__unsaved/Statement' does not match any nodes
+2021-11-08 02:04:53.208532 (Thread-274): The selection criterion '1.sql+' does not match any nodes
+2021-11-08 02:04:53.208625 (Thread-274): No nodes selected!
+2021-11-08 02:04:53.210148 (Thread-274): sending response (<Response 2285 bytes [200 OK]>) to 10.0.5.16
+2021-11-08 02:04:55.528143 (Thread-275): handling status request
+2021-11-08 02:04:55.528465 (Thread-275): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a3b9d638-593c-4430-a60a-49213c317f2f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a42460a0>]}
+2021-11-08 02:04:55.528988 (Thread-275): sending response (<Response 1674 bytes [200 OK]>) to 10.0.18.201
+2021-11-08 02:04:55.539243 (Thread-276): handling status request
+2021-11-08 02:04:55.539446 (Thread-276): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a3b9d638-593c-4430-a60a-49213c317f2f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a4246310>]}
+2021-11-08 02:04:55.539806 (Thread-276): sending response (<Response 1674 bytes [200 OK]>) to 10.0.2.60
+2021-11-08 02:04:55.987145 (Thread-277): handling status request
+2021-11-08 02:04:55.987456 (Thread-277): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a3b9d638-593c-4430-a60a-49213c317f2f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a42464f0>]}
+2021-11-08 02:04:55.987926 (Thread-277): sending response (<Response 1652 bytes [200 OK]>) to 10.0.5.16
+2021-11-08 02:04:55.993688 (Thread-278): handling list request
+2021-11-08 02:04:55.993902 (Thread-278): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'a3b9d638-593c-4430-a60a-49213c317f2f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a42466d0>]}
+2021-11-08 02:04:56.050108 (Thread-278): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '766d61e2-b35a-476e-a102-ca613364d001', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a4294f40>]}
+2021-11-08 02:04:56.050389 (Thread-278): Found 33 models, 72 tests, 0 snapshots, 0 analyses, 184 macros, 0 operations, 0 seed files, 28 sources, 0 exposures
+2021-11-08 02:04:56.053724 (Thread-278): The selection criterion '+1636337072989/__unsaved/Statement' does not match any nodes
+2021-11-08 02:04:56.054268 (Thread-278): The selection criterion '1.sql+' does not match any nodes
+2021-11-08 02:04:56.054365 (Thread-278): No nodes selected!
+2021-11-08 02:04:56.055822 (Thread-278): sending response (<Response 2285 bytes [200 OK]>) to 10.0.5.16
+2021-11-08 02:05:03.121827 (Thread-279): handling status request
+2021-11-08 02:05:03.122185 (Thread-279): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': '766d61e2-b35a-476e-a102-ca613364d001', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa3a42c2040>]}
+2021-11-08 02:05:03.122653 (Thread-279): sending response (<Response 1674 bytes [200 OK]>) to 10.0.19.209
