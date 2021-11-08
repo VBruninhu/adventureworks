@@ -1,0 +1,47 @@
+version: 2
+
+models:
+    - name: fact_sales
+      description: "Nossa tabela de fatos"
+      columns:
+        - name: order_id
+          description: "A cahve primária original da tabela"
+          tests:
+            - unique
+            - not_null
+
+    - name: dim_humanresources
+      description: "A tabela de dim_humanrecources"
+      columns:
+        - name: customer_id
+          description: "The primary key for this table"
+          tests:
+            - unique
+            - not_null
+            
+    - name: dim_person
+      description: "A tabela de dim_person"
+      columns:
+        - name: employee_id
+          description: "The primary key for this table"
+          tests:
+            - unique
+            - not_null
+
+    - name: dim_purchasing
+      description: "A tabela de dim_purchasing"
+      columns:
+          - name: product_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+            
+    - name: dim_production
+      description: "A tabela de dim_production"
+      columns:
+          - name: shipper_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null

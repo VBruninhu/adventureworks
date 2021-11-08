@@ -1,0 +1,292 @@
+version: 2
+
+sources:
+  - name: querry_adventureworks20211025
+    tables:
+
+      - name: humanresources_department
+        description: Essa é a tabela department do humanresources
+        columns:
+          - name: departmentid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: humanresources_employee
+        description: Essa é a tabela employee do humanresources
+        columns:
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: humanresources_employeedepartmenthistory
+        description: Essa é a tabela employee_department_history do humanresources
+        columns:
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: departmentid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: shiftid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: humanresources_employeepayhistory
+        description: Essa é a tabela employee_history do humanresources
+        columns:
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: humanresources_shift
+        description: Essa é a tabela shift do humanresources
+        columns:
+          - name: shiftid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: person_address
+        description: Essa é a tabela address do person
+        columns:
+          - name: addressid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: person_businessentityaddress
+        description: Essa é a tabela business_entity_address do person
+        columns:
+          - name: addressid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: person_countryregion
+        description: Essa é a tabela country_region do person
+        columns:
+          - name: countryregioncode
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: person_person
+        description: Essa é a tabela person do person
+        columns:
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: person_stateprovince
+        description: Essa é a tabela state_province do person
+        columns:
+          - name: stateprovinceid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: production_product
+        description: Essa é a tabela product do production
+        columns:
+          - name: productid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: production_productcategory
+        description: Essa é a tabela product_category do production
+        columns:
+          - name: productcategoryid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: production_productsubcategory
+        description: Essa é a tabela product_subcategory do production
+        columns:
+          - name: productsubcategoryid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: production_transactionhistory
+        description: Essa é a tabela transaction_history do production
+        columns:
+          - name: transactionid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: purchasing_productvendor
+        description: Essa é a tabela product_vendor do purchasing
+        columns:
+          - name: productid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: purchasing_purchaseorderdetail
+        description: Essa é a tabela purchase_order_detail do purchasing
+        columns:
+          - name: purchaseorderid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: purchaseorderdetailid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: purchasing_purchaseorderheader
+        description: Essa é a tabela purchase_order_header do purchasing
+        columns:
+          - name: purchaseorderid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: purchasing_shipmethod
+        description: Essa é a tabela ship_method do purchasing
+        columns:
+          - name: shipmethodid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: purchasing_vendor
+        description: Essa é a tabela vendor do purchasing
+        columns:
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_creditcard
+        description: Essa é a tabela credit_card do sales
+        columns:
+          - name: creditcardid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_customer
+        description: Essa é a tabela customer do sales
+        columns:
+          - name: customerid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesorderdetail
+        description: Essa é a tabela sales_order_detail do sales
+        columns:
+          - name: salesorderid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: salesorderdetailid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesorderheader
+        description: Essa é a tabela sales_order_header do sales
+        columns:
+          - name: salesorderid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesorderheadersalesreason
+        description: Essa é a tabela sales_order_header_sales_reason do sales
+        columns:
+          - name: salesorderid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: salesreasonid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesperson
+        description: Essa é a tabela sales_person do sales
+        columns:
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesreason
+        description: Essa é a tabela sales_reason do sales
+        columns:
+          - name: salesreasonid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesterritory
+        description: Essa é a tabela sales_territory do sales
+        columns:
+          - name: territoryid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_store
+        description: Essa é a tabela store do sales
+        columns:
+          - name: businessentityid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
