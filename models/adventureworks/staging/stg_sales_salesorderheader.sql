@@ -13,7 +13,7 @@ with
             , customerid
             , salespersonid
             , territoryid
-            , billtoaddressid
+            -- , billtoaddressid
             , shiptoaddressid
             , shipmethodid
             , creditcardid

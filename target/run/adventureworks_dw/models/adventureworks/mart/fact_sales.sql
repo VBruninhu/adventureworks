@@ -13,11 +13,6 @@ with
         from `woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_creditcard`
     ), 
 
-    sales_customer as (
-        select *
-        from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_customer`
-    ),
-
     sales_salesorderdetail as (
         select *
         from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_salesorderdetail`
@@ -33,112 +28,105 @@ with
         from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_salesorderheadersalesreason`
     ),
 
-    sales_salesperson as (
-        select *
-        from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_salesperson`
-    ),
-
     sales_salesreason as (
         select *
         from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_salesreason`
     ),
 
-    sales_store as (
+    person_address as (
         select *
-        from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_sales_store`
+        from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_person_address`
     ),
 
-    human_resources as (
+    person_stateprovince as (
+        select *
+        from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_person_stateprovince`
+    ),
+
+    person_countryregion as (
+        select *
+        from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_person_countryregion`
+    ),
+
+    purchasing_shipmethod as (
+        select *
+        from`woven-passkey-328019`.`dbt_vbruninhu`.`stg_purchasing_shipmethod`
+    ),
+
+    dim_employee as (
         select 
-            hr_sk
+            employee_sk
             , businessentityid
-        from`woven-passkey-328019`.`dbt_vbruninhu`.`dim_humanresources`
+        from`woven-passkey-328019`.`dbt_vbruninhu`.`dim_employee`
     ),
 
-    person as (
+    dim_customer as (
         select
-            pers_sk
+            customer_sk
             , businessentityid
-        from`woven-passkey-328019`.`dbt_vbruninhu`.`dim_person`
+        from`woven-passkey-328019`.`dbt_vbruninhu`.`dim_customer`
     ),
 
-    production as (
+    dim_production as (
         select
-            prod_sk
-            , transactionid
+            production_sk
             , productid
         from`woven-passkey-328019`.`dbt_vbruninhu`.`dim_production`
     ),
 
-    purchasing as (
+    dim_purchasing as (
         select
-            pur_sk
-            , purchaseorderid
+            purchasing_sk
             , productid
-            , vendorid
         from`woven-passkey-328019`.`dbt_vbruninhu`.`dim_purchasing`
     ),
 
     merged as (
-        select 
-            row_number() over (order by sales_ord_head.salesorderid) as sales_sk -- auto-incremental surrogate key
-            , sales_ord_head.salesorderid
-            , sales_ord_head_sales_reas.salesreasonid
-            , sales_reas.name as sales_reason_name
-            , sales_reas.reasontype
+        select
+            sales_ord_head.salesorderid
             , sales_ord_head.revisionnumber
             , sales_ord_head.orderdate
             , sales_ord_head.status
             , sales_ord_head.purchaseordernumber
             , sales_ord_head.customerid
-            , sales_ord_head.salespersonid as sales_ord_head_salespersonid
-            , sales_ord_head.territoryid as sales_ord_head_territoryid
-            , sales_ord_head.billtoaddressid
-            , sales_ord_head.shiptoaddressid
-            , sales_ord_head.shipmethodid
-            , sales_ord_head.creditcardid
+            , sales_ord_head.salespersonid
+            , sales_ord_head.territoryid
             , sales_ord_head.subtotal
             , sales_ord_head.taxamt
             , sales_ord_head.freight
             , sales_ord_head.totaldue
-            , cred_card.cardtype
-            , sales_pers.territoryid as sales_pers_territoryid
-            , sales_pers.salesquota
-            , sales_pers.bonus
-            , sales_pers.commissionpct
-            , sales_pers.salesytd
-            , sales_pers.saleslastyear
-            , customer.personid
-            , customer.storeid
-            , store.name as sales_store_name
-            , store.salespersonid as store_salespersonid
+            , credit_card.cardtype
+            , sales_reas.salesreasonid
+            , sales_reas.name as sales_reason_name
+            , sales_reas.reasontype
             , sales_ord_det.salesorderdetailid
             , sales_ord_det.orderqty
             , sales_ord_det.productid
             , sales_ord_det.specialofferid
             , sales_ord_det.unitprice
             , sales_ord_det.unitpricediscount
-            , hr.businessentityid
-            , hr.hr_sk
-            , pers.pers_sk
-            , pur.pur_sk
-            , pur.purchaseorderid
-            , prod.prod_sk
-            , prod.transactionid
-
+            , per_address.city
+            , state_prov.name as state_province_name
+            , country_reag.name as country_region_name
+            , ship_method.name as ship_method_name
+            , dim_employee.employee_sk
+            , dim_customer.customer_sk
+            , dim_production.production_sk
+            , dim_purchasing.purchasing_sk
 
         from sales_salesorderheader sales_ord_head
+        left join sales_creditcard credit_card on sales_ord_head.creditcardid = credit_card.creditcardid
         left join sales_salesorderheadersalesreason sales_ord_head_sales_reas on sales_ord_head.salesorderid = sales_ord_head_sales_reas.salesorderid
         left join sales_salesreason sales_reas on sales_ord_head_sales_reas.salesreasonid = sales_reas.salesreasonid
-        left join sales_creditcard cred_card on sales_ord_head.creditcardid = cred_card.creditcardid
-        left join sales_salesperson sales_pers on sales_ord_head.customerid = sales_pers.businessentityid
-        left join sales_customer customer on sales_ord_head.customerid = customer.customerid
-        left join sales_store store on sales_pers.businessentityid = store.businessentityid
         left join sales_salesorderdetail sales_ord_det on sales_ord_head.salesorderid = sales_ord_det.salesorderid
-        left join human_resources hr on sales_pers.businessentityid = hr.businessentityid
-        left join person pers on customer.customerid = pers.businessentityid
-        left join purchasing pur on pers.businessentityid = pur.vendorid
-        left join production prod on pur.productid = prod.productid
+        left join person_address per_address on sales_ord_head.shiptoaddressid = per_address.addressid
+        left join person_stateprovince state_prov on per_address.stateprovinceid = state_prov.stateprovinceid
+        left join person_countryregion country_reag on state_prov.countryregioncode = country_reag.countryregioncode
+        left join purchasing_shipmethod ship_method on sales_ord_head.shipmethodid = ship_method.shipmethodid
+        left join dim_employee dim_employee on sales_ord_head.salespersonid = dim_employee.businessentityid
+        left join dim_customer dim_customer on sales_ord_head.customerid = dim_customer.businessentityid
+        left join dim_production dim_production on sales_ord_det.productid = dim_production.productid
+        left join dim_purchasing dim_purchasing on sales_ord_det.productid = dim_purchasing.productid
     )
 
 select * from merged
