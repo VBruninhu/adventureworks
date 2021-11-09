@@ -81,8 +81,8 @@ with
 
     merged as (
         select 
-            row_number() over (order by sales_ord_head_sales_reas.salesorderid) as sales_sk -- auto-incremental surrogate key
-            , sales_ord_head_sales_reas.salesorderid
+            row_number() over (order by sales_ord_head.salesorderid) as sales_sk -- auto-incremental surrogate key
+            , sales_ord_head.salesorderid
             , sales_ord_head_sales_reas.salesreasonid
             , sales_reas.name as sales_reason_name
             , sales_reas.reasontype
@@ -126,9 +126,10 @@ with
             , prod.prod_sk
             , prod.transactionid
 
-        from sales_salesorderheadersalesreason sales_ord_head_sales_reas
+
+        from sales_salesorderheader sales_ord_head
+        left join sales_salesorderheadersalesreason sales_ord_head_sales_reas on sales_ord_head.salesorderid = sales_ord_head_sales_reas.salesorderid
         left join sales_salesreason sales_reas on sales_ord_head_sales_reas.salesreasonid = sales_reas.salesreasonid
-        left join sales_salesorderheader sales_ord_head on sales_ord_head_sales_reas.salesorderid = sales_ord_head.salesorderid
         left join sales_creditcard cred_card on sales_ord_head.creditcardid = cred_card.creditcardid
         left join sales_salesperson sales_pers on sales_ord_head.customerid = sales_pers.businessentityid
         left join sales_customer customer on sales_ord_head.customerid = customer.customerid
