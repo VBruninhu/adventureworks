@@ -18,7 +18,7 @@ with
 
     merged as (
         select 
-            row_number() over (order by store.businessentityid) as customer_sk -- auto-incremental surrogate key
+            row_number() over (order by customer.customerid) as customer_sk -- auto-incremental surrogate key
             , store.businessentityid
             , store.name as store_name
             , store.salespersonid
@@ -28,9 +28,9 @@ with
             , person.firstname
             , person.lastname
 
-        from sales_store store
-        left join sales_customer customer on store.businessentityid = customer.storeid
-        left join pers_person person on store.businessentityid = person.businessentityid
+        from sales_customer customer
+        left join pers_person person on customer.personid = person.businessentityid
+        left join sales_store store on store.businessentityid = customer.storeid
     )
 
 select * from merged

@@ -56,7 +56,7 @@ with
     dim_customer as (
         select
             customer_sk
-            , businessentityid
+            , customerid
         from`woven-passkey-328019`.`dbt_vbruninhu`.`dim_customer`
     ),
 
@@ -84,10 +84,8 @@ with
             , sales_ord_head.customerid
             , sales_ord_head.salespersonid
             , sales_ord_head.territoryid
-            , sales_ord_head.subtotal
             , sales_ord_head.taxamt
             , sales_ord_head.freight
-            , sales_ord_head.totaldue
             , credit_card.cardtype
             , sales_reas.salesreasonid
             , sales_reas.name as sales_reason_name
@@ -117,7 +115,7 @@ with
         left join person_countryregion country_reag on state_prov.countryregioncode = country_reag.countryregioncode
         left join purchasing_shipmethod ship_method on sales_ord_head.shipmethodid = ship_method.shipmethodid
         left join dim_employee dim_employee on sales_ord_head.salespersonid = dim_employee.businessentityid
-        left join dim_customer dim_customer on sales_ord_head.customerid = dim_customer.businessentityid
+        left join dim_customer dim_customer on sales_ord_head.customerid = dim_customer.customerid
         left join dim_production dim_production on sales_ord_det.productid = dim_production.productid
         left join dim_purchasing dim_purchasing on sales_ord_det.productid = dim_purchasing.productid
     )

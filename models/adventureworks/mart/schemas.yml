@@ -7,13 +7,9 @@ models:
         - name: salesorderid
           description: "A cahve primária original da tabela"
           tests:
-            - unique
             - not_null
         - name: salesreasonid
           description: "A cahve primária original da tabela"
-          tests:
-            - unique
-            - not_null
 
     - name: dim_humanresources
       description: "A tabela de dim_humanrecources"
@@ -38,15 +34,9 @@ models:
       columns:
           - name: purchaseorderid
             description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
             
     - name: dim_production
       description: "A tabela de dim_production"
       columns:
           - name: transactionid
             description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null

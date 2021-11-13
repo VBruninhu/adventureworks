@@ -28,17 +28,14 @@ sources:
           - name: businessentityid
             description: Primary key
             tests:
-              - unique
               - not_null
           - name: departmentid
             description: Primary key
             tests:
-              - unique
               - not_null
           - name: shiftid
             description: Primary key
             tests:
-              - unique
               - not_null
 
       - name: humanresources_employeepayhistory
@@ -47,7 +44,6 @@ sources:
           - name: businessentityid
             description: Primary key
             tests:
-              - unique
               - not_null
 
       - name: humanresources_shift
@@ -128,12 +124,10 @@ sources:
           - name: productid
             description: Primary key
             tests:
-              - unique
               - not_null
           - name: businessentityid
             description: Primary key
             tests:
-              - unique
               - not_null
 
       - name: purchasing_shipmethod
@@ -178,7 +172,6 @@ sources:
           - name: salesorderid
             description: Primary key
             tests:
-              - unique
               - not_null
           - name: salesorderdetailid
             description: Primary key
@@ -201,12 +194,10 @@ sources:
           - name: salesorderid
             description: Primary key
             tests:
-              - unique
               - not_null
           - name: salesreasonid
             description: Primary key
             tests:
-              - unique
               - not_null
 
       - name: sales_salesreason
